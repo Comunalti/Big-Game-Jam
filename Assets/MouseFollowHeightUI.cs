@@ -6,6 +6,12 @@ using UnityEngine;
 public class MouseFollowHeightUI : MonoBehaviour
 {
     private Vector2 _mousePosition;
+    private RectTransform _rectTransform;
+
+    private void Start()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+    }
 
     private void OnEnable()
     {
@@ -24,6 +30,8 @@ public class MouseFollowHeightUI : MonoBehaviour
     
     void Update()
     {
-        
+        var rectTransformPosition = _rectTransform.position;
+        rectTransformPosition.y = _mousePosition.y;
+        _rectTransform.position = rectTransformPosition;
     }
 }
